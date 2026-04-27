@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react'
 import { useApp } from '../context/AppContext'
-import { analyzeBodyComposition } from '../utils/claude'
+import { analyzeBodyComposition } from '../utils/ai'
 import { todayStr } from '../utils/calories'
 import {
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
@@ -46,14 +46,14 @@ export default function BodyMetrics() {
     reader.onload = async (ev) => {
       const dataUrl = ev.target.result
       setScanPreview(dataUrl)
-      if (!settings.anthropicApiKey) {
-        setScanError('⚠️ 設定でAnthropicのAPIキーを入力してください')
+      if (!settings.geminiApiKey) {
+        setScanError('⚠️ 設定でGemini APIキーを入力してください')
         return
       }
       setScanning(true)
       try {
         const base64 = dataUrl.split(',')[1]
-        const result = await analyzeBodyComposition(settings.anthropicApiKey, base64, file.type)
+        const result = await analyzeBodyComposition(settings.geminiApiKey, base64, file.type)
         // Merge non-null results into form
         setForm((prev) => {
           const next = { ...prev }

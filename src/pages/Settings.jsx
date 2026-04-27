@@ -126,25 +126,25 @@ export default function Settings() {
 
       {/* API Key */}
       <div className="card space-y-3">
-        <h2 className="font-semibold text-gray-700">🤖 Anthropic APIキー</h2>
-        <p className="text-xs text-gray-500">
-          食事写真のAI解析機能を使うには、Anthropic（Claude）のAPIキーが必要です。
-          <a
-            href="https://console.anthropic.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-accent underline ml-1"
-          >
-            取得はこちら
-          </a>
-        </p>
+        <h2 className="font-semibold text-gray-700">🤖 Google Gemini APIキー（無料）</h2>
+        <div className="bg-teal-50 rounded-xl p-3 text-xs text-teal-700 space-y-1">
+          <p className="font-semibold">✅ カード登録不要・完全無料</p>
+          <p>Googleアカウントがあれば今すぐ取得できます（1日1,500回まで無料）</p>
+        </div>
+        <div className="bg-gray-50 rounded-xl p-3 text-xs text-gray-600 space-y-1.5">
+          <p className="font-semibold text-gray-700">📋 取得手順</p>
+          <p>① <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener noreferrer" className="text-accent underline">aistudio.google.com/app/apikey</a> を開く</p>
+          <p>② Googleアカウントでログイン</p>
+          <p>③「Create API Key」をクリック</p>
+          <p>④ 表示されたキー（AIzaSy...）をコピーして下に貼り付け</p>
+        </div>
         <div className="relative">
           <input
             type={showKey ? 'text' : 'password'}
-            value={form.anthropicApiKey}
-            onChange={(e) => set('anthropicApiKey', e.target.value)}
+            value={form.geminiApiKey}
+            onChange={(e) => set('geminiApiKey', e.target.value)}
             className="input-field pr-16"
-            placeholder="sk-ant-..."
+            placeholder="AIzaSy..."
           />
           <button
             className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-gray-400"
@@ -155,7 +155,7 @@ export default function Settings() {
           </button>
         </div>
         <p className="text-xs text-orange-500 bg-orange-50 rounded-xl p-2">
-          ⚠️ APIキーはブラウザのlocalStorageに保存されます。共有デバイスでの使用には注意してください。
+          ⚠️ APIキーはこのデバイスのみに保存されます。他の人と共有しないでください。
         </p>
       </div>
 

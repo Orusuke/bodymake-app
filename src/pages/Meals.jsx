@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react'
 import { useApp } from '../context/AppContext'
-import { analyzeFoodPhoto, analyzeFoodText } from '../utils/claude'
+import { analyzeFoodPhoto, analyzeFoodText } from '../utils/ai'
 import { filterByDate, sumCalories, todayStr } from '../utils/calories'
 
 const MEAL_TYPES = ['朝食', '昼食', '夕食', 'おやつ', 'その他']
@@ -46,8 +46,8 @@ export default function Meals() {
   }
 
   const checkApiKey = () => {
-    if (!settings.anthropicApiKey) {
-      setError('⚠️ 設定でAnthropicのAPIキーを入力してください')
+    if (!settings.geminiApiKey) {
+      setError('⚠️ 設定でGemini APIキーを入力してください')
       return false
     }
     return true
@@ -66,7 +66,7 @@ export default function Meals() {
     setAnalyzing(true)
     setError('')
     try {
-      applyResult(await analyzeFoodText(settings.anthropicApiKey, description))
+      applyResult(await analyzeFoodText(settings.geminiApiKey, description))
     } catch (e) {
       setError(`エラー: ${e.message}`)
     } finally {
@@ -79,7 +79,7 @@ export default function Meals() {
     setAnalyzing(true)
     setError('')
     try {
-      const result = await analyzeFoodPhoto(settings.anthropicApiKey, photo.dataUrl.split(',')[1], photo.mimeType)
+      const result = await analyzeFoodPhoto(settings.geminiApiKey, photo.dataUrl.split(',')[1], photo.mimeType)
       applyResult(result)
     } catch (e) {
       setError(`エラー: ${e.message}`)
@@ -121,9 +121,9 @@ export default function Meals() {
       <div className="card space-y-3">
         <h2 className="font-semibold text-gray-700">➕ 食事を追加</h2>
 
-        {!settings.anthropicApiKey && (
+        {!settings.geminiApiKey && (
           <p className="text-xs text-orange-500 bg-orange-50 rounded-xl p-2">
-            ⚠️ 設定でAnthropicのAPIキーを入力するとAI計算が使えます
+            ⚠️ 設定でGemini APIキーを入力するとAI計算が使えます
           </p>
         )}
 
