@@ -20,7 +20,7 @@ export default function Exercise() {
 
   const handleAnalyze = async () => {
     if (!description.trim()) return
-    if (!settings.geminiApiKey) {
+    if (!settings.openrouterApiKey) {
       setError('⚠️ 設定でGemini APIキーを入力してください')
       return
     }
@@ -28,7 +28,7 @@ export default function Exercise() {
     setError('')
     setAnalysisResult(null)
     try {
-      const result = await analyzeExercise(settings.geminiApiKey, description, weight)
+      const result = await analyzeExercise(settings.openrouterApiKey, description, weight)
       setAnalysisResult(result)
       setPendingCalories(result.total)
     } catch (e) {
@@ -76,7 +76,7 @@ export default function Exercise() {
       <div className="card space-y-3">
         <h2 className="font-semibold text-gray-700">➕ 運動を追加</h2>
 
-        {!settings.geminiApiKey && (
+        {!settings.openrouterApiKey && (
           <p className="text-xs text-orange-500 bg-orange-50 rounded-xl p-2">
             ⚠️ 設定でGemini APIキーを入力するとAI計算が使えます
           </p>

@@ -26,7 +26,7 @@ export const defaultSettings = {
   workHoursPerDay: 8,
   workDaysPerWeek: 5,
   workType: 'sedentary',
-  geminiApiKey: '',
+  openrouterApiKey: '',
 }
 
 export const storage = {

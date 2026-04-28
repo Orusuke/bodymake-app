@@ -46,7 +46,7 @@ export default function Meals() {
   }
 
   const checkApiKey = () => {
-    if (!settings.geminiApiKey) {
+    if (!settings.openrouterApiKey) {
       setError('⚠️ 設定でGemini APIキーを入力してください')
       return false
     }
@@ -66,7 +66,7 @@ export default function Meals() {
     setAnalyzing(true)
     setError('')
     try {
-      applyResult(await analyzeFoodText(settings.geminiApiKey, description))
+      applyResult(await analyzeFoodText(settings.openrouterApiKey, description))
     } catch (e) {
       setError(`エラー: ${e.message}`)
     } finally {
@@ -79,7 +79,7 @@ export default function Meals() {
     setAnalyzing(true)
     setError('')
     try {
-      const result = await analyzeFoodPhoto(settings.geminiApiKey, photo.dataUrl.split(',')[1], photo.mimeType)
+      const result = await analyzeFoodPhoto(settings.openrouterApiKey, photo.dataUrl.split(',')[1], photo.mimeType)
       applyResult(result)
     } catch (e) {
       setError(`エラー: ${e.message}`)
@@ -121,7 +121,7 @@ export default function Meals() {
       <div className="card space-y-3">
         <h2 className="font-semibold text-gray-700">➕ 食事を追加</h2>
 
-        {!settings.geminiApiKey && (
+        {!settings.openrouterApiKey && (
           <p className="text-xs text-orange-500 bg-orange-50 rounded-xl p-2">
             ⚠️ 設定でGemini APIキーを入力するとAI計算が使えます
           </p>

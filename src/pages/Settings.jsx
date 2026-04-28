@@ -126,25 +126,25 @@ export default function Settings() {
 
       {/* API Key */}
       <div className="card space-y-3">
-        <h2 className="font-semibold text-gray-700">🤖 Google Gemini APIキー（無料）</h2>
+        <h2 className="font-semibold text-gray-700">🤖 OpenRouter APIキー（無料）</h2>
         <div className="bg-teal-50 rounded-xl p-3 text-xs text-teal-700 space-y-1">
           <p className="font-semibold">✅ カード登録不要・完全無料</p>
-          <p>Googleアカウントがあれば今すぐ取得できます（1日1,500回まで無料）</p>
+          <p>アカウント作成だけで使えます（写真解析・テキスト解析対応）</p>
         </div>
         <div className="bg-gray-50 rounded-xl p-3 text-xs text-gray-600 space-y-1.5">
           <p className="font-semibold text-gray-700">📋 取得手順</p>
-          <p>① <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener noreferrer" className="text-accent underline">aistudio.google.com/app/apikey</a> を開く</p>
-          <p>② Googleアカウントでログイン</p>
-          <p>③「Create API Key」をクリック</p>
-          <p>④ 表示されたキー（AIzaSy...）をコピーして下に貼り付け</p>
+          <p>① <a href="https://openrouter.ai" target="_blank" rel="noopener noreferrer" className="text-accent underline">openrouter.ai</a> でアカウント作成</p>
+          <p>② 右上アイコン →「Keys」→「Create Key」</p>
+          <p>③ 名前を入力して「Create」</p>
+          <p>④ 表示されたキー（sk-or-v1-...）をコピーして下に貼り付け</p>
         </div>
         <div className="relative">
           <input
             type={showKey ? 'text' : 'password'}
-            value={form.geminiApiKey}
-            onChange={(e) => set('geminiApiKey', e.target.value)}
+            value={form.openrouterApiKey}
+            onChange={(e) => set('openrouterApiKey', e.target.value)}
             className="input-field pr-16"
-            placeholder="AIzaSy..."
+            placeholder="sk-or-v1-..."
           />
           <button
             className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-gray-400"
